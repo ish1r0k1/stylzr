@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Provider, connect } from 'react-redux';
 import { Router } from 'react-router';
 import PropTypes from 'prop-types';
+import { initAuth } from '../actions/authenticate'
+import Splash from '../components/Splash'
 
 export class App extends Component {
   static get propTypes() {
@@ -12,10 +14,24 @@ export class App extends Component {
     }
   }
 
+  constructor(props) {
+    super(props)
+
+    this.state = { isLoading: true }
+  }
+
+  componentDidMount() {
+    const { initAuth } = this.props
+    initAuth().then(() => {
+      this.setState({ isLoading: false })
+    })
+  }
+
   render() {
     const { store, history, routes } = this.props;
+    const { isLoading } = this.state
 
-    return (
+    return isLoading ? <Splash /> : (
       <Provider store={store}>
         <Router history={history}>
           {routes}
@@ -25,4 +41,17 @@ export class App extends Component {
   }
 }
 
-export default connect()(App)
+const mapDispatchToProps = {
+  initAuth
+}
+
+const mapStateToProps = (state) => {
+  return {
+    uid: state.user.uid
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App)
