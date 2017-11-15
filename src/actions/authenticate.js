@@ -6,8 +6,7 @@ import * as types from '../constants/actionTypes'
 export async function authenticate(provider) {
   try {
     const result = await firebaseAuth.signInWithPopup(provider)
-    signInSuccess(result)
-    return push('/dashboard')
+    return signInSuccess(result)
   } catch (err) {
     return signInFail(err)
   }
@@ -54,8 +53,7 @@ export async function signOut() {
       .then(done)
   })
 
-  signOutSuccess()
-  return push('/')
+  return signOutSuccess()
 }
 
 export const signOutSuccess = () => {
