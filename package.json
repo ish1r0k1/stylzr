@@ -102,7 +102,6 @@
       "react-app"
     ],
     "plugins": [
-      "transform-object-rest-spread",
       "syntax-async-functions",
       "transform-async-to-generator",
       "transform-runtime",
