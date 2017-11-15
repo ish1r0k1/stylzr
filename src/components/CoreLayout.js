@@ -10,14 +10,12 @@ export default class CoreLayout extends Component {
   }
 
   render() {
-    const { children } = this.props;
-
     return (
       <div style={{height: '100%'}}>
         <Header />
-        <div className="main">
-          <div className="main-content">
-            {children}
+        <div className="main row center-xs">
+          <div className="main-content col-xs-11 start-xs">
+            {this.props.children}
           </div>
         </div>
         <Footer />
