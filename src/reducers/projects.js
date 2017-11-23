@@ -18,9 +18,9 @@ const projects = (state = initialState, action) => {
       return Object.assign({}, state)
     }
 
-    case types.LOAD_PROJECTS_SUCCESS: {
+    case types.LOAD_PROJECTS_SUCCESS:
+    case types.LOAD_PROJECT_SUCCESS:
       return payload
-    }
 
     default: {
       return state

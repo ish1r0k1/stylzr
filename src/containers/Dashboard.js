@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router'
 import { connect } from 'react-redux'
 import { createProject, removeProject, loadProjects } from '../actions/projects'
 
@@ -20,8 +21,8 @@ class Dashboard extends Component {
           <button onClick={() => {
             this.props.createProject({
               name: 'test project',
-              colors: [],
-              typefaces: []
+              colors: [{ name: 'black', hex: '000', opacity: 1 }],
+              typefaces: [{ family: 'Raleway', weight: 400, size: 16 }]
             })
           }}>create dummy project</button>
         </div>
@@ -29,10 +30,17 @@ class Dashboard extends Component {
           {Object.keys(projects).map((key) => {
             return (
               <li key={key}>
-              <div>{projects[key].name}</div>
-              <a onClick={() => {
-                this.props.removeProject(key)
-              }}>remove</a>
+                  <div>{projects[key].name}</div>
+                  <ul>
+                    <li>
+                      <Link to={`/projects/${key}`}>view details</Link>
+                    </li>
+                    <li>
+                      <a href="#" onClick={() => {
+                        this.props.removeProject(key)
+                      }}>remove</a>
+                    </li>
+                  </ul>
               </li>
             )
           })}

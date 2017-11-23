@@ -72,15 +72,41 @@ export const updateProjectError = () => {
   }
 }
 
+export const loadProject = async (id) => {
+  const { uid } = firebaseAuth.currentUser
+
+  const snapshot = await new Promise(done => {
+    firebaseDb.ref(`/projects/${uid}/${id}`)
+      .once('value').then(done)
+  })
+
+  const result = snapshot.val() || []
+
+  return loadProjectSuccess({ [id]: result})
+}
+
+export const loadProjectSuccess = (result) => {
+  return {
+    type: types.LOAD_PROJECT_SUCCESS,
+    payload: result
+  }
+}
+
+export const loadProjectError = () => {
+  return {
+    type: types.LOAD_PROJECT_ERROR
+  }
+}
+
 export const loadProjects = async () => {
   const { uid } = firebaseAuth.currentUser
 
   const snapshot = await new Promise(done => {
-    firebaseDb.ref(`/projects`)
+    firebaseDb.ref(`/projects/${uid}`)
       .once('value').then(done)
   })
 
-  const result = snapshot.val() ? snapshot.val()[uid] : []
+  const result = snapshot.val() || []
 
   return loadProjectsSuccess(result)
 }
