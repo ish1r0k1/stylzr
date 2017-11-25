@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import logo from '../images/logo.svg';
 import styles from '../styles/init.css'
 
 class Home extends Component {
+  static get propTypes() {
+    props: PropTypes.element.isRequired
+  }
+
   render() {
     return (
       <div className={styles.App}>
@@ -11,7 +16,7 @@ class Home extends Component {
           <h1 className={styles['App-title']}>Welcome to React</h1>
         </header>
         <p className={styles['App-intro']}>
-          To get started, edit <code>src/App.js</code> and save to reload.
+          <button onClick={this.props.signInWithGoogle}>Sign in with Google</button>
         </p>
       </div>
     );

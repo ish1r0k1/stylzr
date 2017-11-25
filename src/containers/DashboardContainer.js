@@ -1,13 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { Link } from 'react-router'
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import { createProject, removeProject, loadProjects } from '../actions/projects'
 
-class Dashboard extends Component {
-  constructor(props) {
-    super(props)
-  }
-
+class DashboardContainer extends Component {
   componentWillMount() {
     this.props.loadProjects()
   }
@@ -65,4 +61,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Dashboard)
+)(DashboardContainer);

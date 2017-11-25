@@ -3,11 +3,7 @@ import { Link } from 'react-router'
 import { connect } from 'react-redux'
 import { loadProject } from '../actions/projects'
 
-class Project extends Component {
-  constructor(props) {
-    super(props)
-  }
-
+class ProjectContainer extends Component {
   componentWillMount() {
     const { params: { id }, projects } = this.props
 
@@ -72,4 +68,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Project)
+)(ProjectContainer)

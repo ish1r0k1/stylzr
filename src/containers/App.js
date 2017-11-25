@@ -3,7 +3,7 @@ import { Provider, connect } from 'react-redux';
 import { Router } from 'react-router';
 import PropTypes from 'prop-types';
 import { initAuth } from '../actions/authenticate'
-import Splash from '../components/Splash'
+import Loading from '../components/Loading'
 
 export class App extends Component {
   static get propTypes() {
@@ -31,7 +31,7 @@ export class App extends Component {
     const { store, history, routes } = this.props;
     const { isLoading } = this.state
 
-    return isLoading ? <Splash /> : (
+    return isLoading ? <Loading/> : (
       <Provider store={store}>
         <Router history={history}>
           {routes}
