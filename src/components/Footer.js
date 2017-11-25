@@ -1,12 +1,12 @@
 import React from 'react'
-import './Footer.css';
+import styles from '../styles/init.css'
 
 export const Footer = () => {
   return (
-  <div className="Footer row center-xs">
-    <div className="Footer-content col-xs-11">
-      <div className="row middle-xs">
-        <p className="Footer-copyright col-xs-12">Powered by Stylzr</p>
+  <div className={`${styles.Footer} ${styles.row} ${styles['center-xs']}`}>
+    <div className={`${styles['Footer-content']} ${styles['col-xs-11']}`}>
+      <div className={`${styles.row} ${styles['middle-xs']}`}>
+        <p className={`${styles['Footer-copyright']} ${styles['col-xs-12']}`}>Powered by Stylzr</p>
       </div>
     </div>
   </div>)

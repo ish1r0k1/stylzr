@@ -1,9 +1,9 @@
 import React from 'react'
-import './Splash.css';
+import styles from '../styles/init.css'
 
 export const Splash = () => {
   return (
-  <div className="Splash">Stylzr</div>)
+  <div className={styles.Splash}>Stylzr</div>)
 }
 
 export default Splash

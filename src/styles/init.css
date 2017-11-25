@@ -1,0 +1,78 @@
+@import 'normalize.css';
+@import 'flexboxgrid';
+
+.Header {
+  height: 64px;
+  border-bottom: solid 1px rgba(0, 0, 0, .14);
+  line-height: 64px;
+
+  &-content {
+    max-width: 1020px;
+  }
+
+  &-logo {
+    margin: 0;
+  }
+}
+
+.main {
+  &-content {
+    padding-top: 30px;
+  }
+}
+
+.Footer {
+  &-content {
+    padding-top: 38px;
+    padding-bottom: 38px;
+  }
+
+  &-copyright {
+    font-size: 13px;
+    text-align: right;
+    margin: 0;
+  }
+}
+
+.App {
+  text-align: center;
+
+  &-logo {
+    animation: App-logo-spin infinite 20s linear;
+    height: 80px;
+  }
+
+  &-header {
+    background-color: #222;
+    height: 150px;
+    padding: 20px;
+    color: white;
+  }
+
+  &-title {
+    font-size: 1.5em;
+  }
+
+  &-intro {
+    font-size: large;
+  }
+}
+
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.Splash {
+  height: 100vh;
+  width: 100%;
+  font-size: 48px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: .03em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(0, 0, 0, .54);
+}
