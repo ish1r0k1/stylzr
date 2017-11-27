@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router'
 import { connect } from 'react-redux';
+import ProjectList from '../components/ProjectList'
 import { createProject, removeProject, loadProjects } from '../actions/projects'
 
 class DashboardContainer extends Component {
@@ -9,38 +10,24 @@ class DashboardContainer extends Component {
   }
 
   render() {
-    const { projects } = this.props
+    const { projects, removeProject } = this.props
 
     return (
       <div>
-        <div>
-          <button onClick={() => {
-            this.props.createProject({
-              name: 'test project',
-              colors: [{ name: 'black', hex: '000', opacity: 1 }],
-              typefaces: [{ family: 'Raleway', weight: 400, size: 16 }]
-            })
-          }}>create dummy project</button>
-        </div>
-        <ul>
-          {Object.keys(projects).map((key) => {
-            return (
-              <li key={key}>
-                  <div>{projects[key].name}</div>
-                  <ul>
-                    <li>
-                      <Link to={`/projects/${key}`}>view details</Link>
-                    </li>
-                    <li>
-                      <a href="#" onClick={() => {
-                        this.props.removeProject(key)
-                      }}>remove</a>
-                    </li>
-                  </ul>
-              </li>
-            )
-          })}
-        </ul>
+        <button onClick={() => {
+          this.props.createProject({
+            name: 'test project',
+            colors: [{ name: 'black', hex: '000', opacity: 1 }],
+            typefaces: [{ family: 'Raleway', weight: 400, size: 16 }]
+          })
+        }}>create dummy project</button>
+
+        <hr/>
+
+        <ProjectList
+          projects={projects}
+          deleteHandler={removeProject}
+        />
       </div>
     )
   }
