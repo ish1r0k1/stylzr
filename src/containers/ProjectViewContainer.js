@@ -5,7 +5,7 @@ import { loadProject } from '../actions/projects'
 import ColorList from '../components/ColorList'
 import TypefaceList from '../components/TypefaceList'
 
-class ProjectContainer extends Component {
+class ProjectViewContainer extends Component {
   componentWillMount() {
     const { params: { id }, projects } = this.props
 
@@ -44,4 +44,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ProjectContainer)
+)(ProjectViewContainer)

@@ -6,9 +6,9 @@ const projects = (state = initialState, action) => {
   const { payload } = action
 
   switch (action.type) {
-    case types.CREATE_PROJECT_SUCCESS: {
+    case types.CREATE_PROJECT_SUCCESS:
+    case types.UPDATE_PROJECT_SUCCESS:
       return Object.assign({}, state, payload)
-    }
 
     case types.REMOVE_PROJECT_SUCCESS: {
       const { key } = payload

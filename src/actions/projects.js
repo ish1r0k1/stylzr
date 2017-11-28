@@ -56,13 +56,31 @@ export const removeProjectError = () => {
   }
 }
 
-export const updateProject = async () => {
+export const updateProject = async (projectId, value) => {
+  const { uid } = firebaseAuth.currentUser
 
+console.log(value)
+
+  try {
+    const updates = {}
+    updates[`/projects/${uid}/${projectId}`] = value
+
+    await new Promise((resolve, reject) => {
+      firebaseDb.ref()
+        .update(updates)
+          .then(resolve, reject)
+    })
+
+    return updateProjectSuccess({ [projectId]: value })
+  } catch (err) {
+    return updateProjectError()
+  }
 }
 
-export const updateProjectSuccess = () => {
+export const updateProjectSuccess = (updatedProject) => {
   return {
-    type: types.UPDATE_PROJECT_SUCCESS
+    type: types.UPDATE_PROJECT_SUCCESS,
+    payload: updatedProject
   }
 }
 
