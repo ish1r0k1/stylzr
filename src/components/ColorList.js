@@ -1,36 +1,48 @@
+/* @flow */
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import ColorItem from './ColorItem'
+import type { Color } from '../types'
 
-export default class ColorList extends Component {
-  constructor(props) {
+type Props = {
+  colors: Array<Color>,
+  onUpdate: (string, Array<*>) => void,
+  editable?: boolean
+}
+
+export default class ColorList extends Component<Props> {
+  addColorHandler: Function;
+  removeColorHandler: Function;
+
+  constructor(props: Props) {
     super(props)
 
     this.addColorHandler = this.addColorHandler.bind(this)
     this.removeColorHandler = this.removeColorHandler.bind(this)
   }
 
-  addColorHandler(evt) {
+  addColorHandler(evt: Event) {
     evt.preventDefault()
 
     const { colors, onUpdate } = this.props
 
     const nameNode = ReactDOM.findDOMNode(this.refs.color_name)
     const hexNode = ReactDOM.findDOMNode(this.refs.color_hex)
-    const opacity = 1
+    const opacity: number = 1
 
-    const name = nameNode.value
-    const hex = hexNode.value
+    if ((nameNode && nameNode instanceof HTMLInputElement) && (hexNode && hexNode instanceof HTMLInputElement)) {
+      const name: string = nameNode.value
+      nameNode.value = ''
+      nameNode.focus()
 
-    nameNode.value = ''
-    hexNode.value = ''
+      const hex: string = hexNode.value
+      hexNode.value = ''
 
-    nameNode.focus()
-
-    onUpdate('colors',  [{ name, hex, opacity }, ...colors])
+      onUpdate('colors',  [{ name, hex, opacity }, ...colors])
+    }
   }
 
-  removeColorHandler(index) {
+  removeColorHandler(index: number) {
     const { colors, onUpdate } = this.props
 
     colors.splice(index, 1)
@@ -53,7 +65,7 @@ export default class ColorList extends Component {
           </form>
           : null
         }
-        {colors.map((color, index) => (
+        {colors.map((color: Color, index: number) => (
           <ColorItem
             key={index}
             index={index}

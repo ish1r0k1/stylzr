@@ -1,6 +1,14 @@
+/* @flow */
 import React from 'react'
+import type { Typeface } from '../types'
 
-const TypefaceItem = (props) => {
+type Props = {
+  typeface: Typeface,
+  index: number,
+  removeHandler: (number) => void
+}
+
+const TypefaceItem = (props: Props) => {
   const { typeface, removeHandler } = props
 
   return (

@@ -1,6 +1,14 @@
+/* @flow */
 import React from 'react'
+import type { Color } from '../types'
 
-const ColorItem = (props) => {
+type Props = {
+  color: Color,
+  index: number,
+  removeHandler: (number) => void
+}
+
+const ColorItem = (props: Props) => {
   const { color, removeHandler } = props
 
   return (

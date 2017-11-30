@@ -1,38 +1,51 @@
+/* @flow */
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import TypefaceItem from './TypefaceItem'
+import type { Typeface } from '../types'
 
-export default class TypefaceList extends Component {
-  constructor(props) {
+type Props = {
+  typefaces: Array<Typeface>,
+  onUpdate: (string, Array<*>) => void,
+  editable?: boolean
+}
+
+export default class TypefaceList extends Component<Props> {
+  addTypefaceHandler: Function;
+  removeTypefaceHandler: Function;
+
+  constructor(props: Props) {
     super(props)
 
     this.addTypefaceHandler = this.addTypefaceHandler.bind(this)
     this.removeTypefaceHandler = this.removeTypefaceHandler.bind(this)
   }
 
-  addTypefaceHandler(evt) {
+  addTypefaceHandler(evt: Event) {
     evt.preventDefault()
 
     const { typefaces, onUpdate } = this.props
 
     const familyNode = ReactDOM.findDOMNode(this.refs.typeface_family)
     const weightNode = ReactDOM.findDOMNode(this.refs.typeface_weight)
-    const sizeNode = (ReactDOM.findDOMNode(this.refs.typeface_size))
+    const sizeNode = ReactDOM.findDOMNode(this.refs.typeface_size)
 
-    const family = familyNode.value
-    const weight = weightNode.value
-    const size = sizeNode.value - 0
+    if ((familyNode && familyNode instanceof HTMLInputElement) && (weightNode && weightNode instanceof HTMLInputElement) && (sizeNode && sizeNode instanceof HTMLInputElement)) {
+      const family: string = familyNode.value
+      const weight: string = weightNode.value
+      const size: number = parseInt(sizeNode.value, 10)
 
-    familyNode.value = ''
-    weightNode.value = ''
-    sizeNode.value = ''
+      familyNode.value = ''
+      weightNode.value = ''
+      sizeNode.value = ''
 
-    familyNode.focus()
+      familyNode.focus()
 
-    onUpdate('typefaces',  [{ family, weight, size }, ...typefaces])
+      onUpdate('typefaces',  [{ family, weight, size }, ...typefaces])
+    }
   }
 
-  removeTypefaceHandler(index) {
+  removeTypefaceHandler(index: number) {
     const { typefaces, onUpdate } = this.props
 
     typefaces.splice(index, 1)
