@@ -10,14 +10,20 @@ class Home extends Component {
 
   render() {
     return (
-      <div className={styles.App}>
-        <header className={styles['App-header']}>
-          <img src={logo} className={styles['App-logo']} alt="logo" />
-          <h1 className={styles['App-title']}>Welcome to React</h1>
-        </header>
-        <p className={styles['App-intro']}>
-          <button onClick={this.props.signInWithGoogle}>Sign in with Google</button>
-        </p>
+      <div className={styles.Home}>
+        <div className={`${styles['Home-container']} ${styles['row']} ${styles['center-xs']} ${styles['middle-xs']}`}>
+          <div className={styles['col-xs-10']}>
+            <div className={styles.Home__header}>Stylzr</div>
+            <div className={`${styles['row']} ${styles['center-xs']}`}>
+              <div className={styles['col-xs-10']}>
+                <div className={styles.Home__description}>Style guide generator</div>
+              </div>
+            </div>
+            <div className={styles.Home__buttons}>
+              <button onClick={this.props.signInWithGoogle}>Sign with Google</button>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

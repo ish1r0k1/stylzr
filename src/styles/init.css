@@ -1,6 +1,45 @@
 @import 'normalize.css';
 @import 'flexboxgrid';
 
+body {
+  color: #212121;
+}
+
+button,
+.button {
+  border: 1px solid #212121;
+  background-color: transparent;
+  border-radius: 36px;
+  padding: 8px 16px;
+  cursor: pointer;
+  display: inline-block;
+
+  &:hover {
+    transition: background-color .3s ease;
+    background-color: rgba(0, 0, 0, .16);
+  }
+}
+
+.Home {
+  &-container {
+    min-height: 100vh;
+  }
+
+  &__header {
+    font-size: 2em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  &__description {
+    padding-top: 60px;
+  }
+
+  &__buttons {
+    padding-top: 60px;
+  }
+}
+
 .Header {
   height: 64px;
   border-bottom: solid 1px rgba(0, 0, 0, .14);
@@ -32,36 +71,6 @@
     text-align: right;
     margin: 0;
   }
-}
-
-.App {
-  text-align: center;
-
-  &-logo {
-    animation: App-logo-spin infinite 20s linear;
-    height: 80px;
-  }
-
-  &-header {
-    background-color: #222;
-    height: 150px;
-    padding: 20px;
-    color: white;
-  }
-
-  &-title {
-    font-size: 1.5em;
-  }
-
-  &-intro {
-    font-size: large;
-  }
-}
-
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
 }
 
 .Loading {
