@@ -1,6 +1,6 @@
 import React from 'react';
 import {Route, Redirect } from 'react-router';
-import CoreLayout from './components/CoreLayout';
+import CoreLayout from './containers/CoreLayout';
 import HomeContainer from './containers/HomeContainer';
 import DashboardContainer from './containers/DashboardContainer';
 import ProjectViewContainer from './containers/ProjectViewContainer';

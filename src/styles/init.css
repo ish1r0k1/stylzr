@@ -3,6 +3,7 @@
 
 body {
   color: #212121;
+  line-height: 1.5;
 }
 
 button,
@@ -18,6 +19,19 @@ button,
     transition: background-color .3s ease;
     background-color: rgba(0, 0, 0, .16);
   }
+}
+
+.link {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+.app-wrapper {
+  min-height: 100vh;
+  background: #f8f8f8;
+  padding-left: 30%;
+  position: relative;
 }
 
 .Home {
@@ -40,17 +54,66 @@ button,
   }
 }
 
-.Header {
-  height: 64px;
-  border-bottom: solid 1px rgba(0, 0, 0, .14);
-  line-height: 64px;
+.Sidebar {
+  position: absolute;
+  width: 30%;
+  height: 100%;
+  background: #fff;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  padding: 30px;
+  box-sizing: border-box;
+  box-shadow: 0 0 1px rgba(0, 0, 0, .1);
 
-  &-content {
-    max-width: 1020px;
+  &__header { }
+
+  &__logo {
+    font-size: 1.3em;
+    text-transform: uppercase;
   }
 
-  &-logo {
-    margin: 0;
+  &__user {
+    padding-top: 30px;
+  }
+
+  &__navigation {
+    padding-top: 30px;
+  }
+}
+
+.user-profile {
+  &__photo-placeholder {
+    width: 100%;
+    position: relative;
+  }
+
+  &__photo {
+    border-radius: 50%;
+    overflow: hidden;
+    position: absolute;
+    top: 0%;
+    left: 0;
+    width: 100%;
+    padding-top: 100%;
+    background-size: contain;
+    background-position: center center;
+  }
+
+  &__name {
+    padding-left: 10px;
+    font-size: 1.1em;
+  }
+}
+
+.global-nav {
+  ul {
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+
   }
 }
 

@@ -15,13 +15,15 @@ const user = (state = initialState, action) => {
       return Object.assign({}, state, {
         uid: payload ? payload.uid : null,
         displayName: payload ? payload.displayName : null,
-        email: payload ? payload.email : null
+        email: payload ? payload.email : null,
+        photoURL: payload ? payload.photoURL : null,
       })
     case types.SIGNOUT_SUCCESS: {
       return Object.assign({}, state, {
         uid: null,
         displayName: null,
-        email: null
+        email: null,
+        photoURL: null
       })
     }
 

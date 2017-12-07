@@ -62,7 +62,8 @@ export const signOutSuccess = () => {
     payload: {
       uid: null,
       displayName: null,
-      email: null
+      email: null,
+      photoURL: null
     }
   }
 }

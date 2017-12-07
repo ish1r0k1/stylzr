@@ -8,6 +8,7 @@ const ProjectList = (props) => {
       <h3>{projects[key].name}</h3>
       <ul>
         <li><Link to={`/projects/${key}`}>view details</Link></li>
+        <li><Link to={`/projects/${key}/edit`}>edit</Link></li>
         <li><a onClick={() => deleteHandler(key)}>delete</a></li>
       </ul>
     </li>
